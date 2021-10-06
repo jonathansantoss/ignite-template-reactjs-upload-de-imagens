@@ -99,7 +99,7 @@ describe('Home page', () => {
     ).toBeInTheDocument();
   });
 
-  it('should be able to render images list', async () => {
+  fit('should be able to render images list', async () => {
     apiMock.onGet('/api/images').reply(200, {
       after: null,
       data: [
