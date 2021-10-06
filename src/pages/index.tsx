@@ -9,10 +9,8 @@ import { Loading } from '../components/Loading';
 import { Error } from '../components/Error';
 
 export default function Home(): JSX.Element {
-  const fetchImages = async ({ pageParam = null }) => {
-    const response = await api.get(
-      `/api/${pageParam ? `images?after=${pageParam}` : 'images'}`
-    );
+  const fetchImages = async ({ pageParam = 0 }) => {
+    const response = await api.get(`api/images?after=${pageParam}`);
     return response;
   };
 
