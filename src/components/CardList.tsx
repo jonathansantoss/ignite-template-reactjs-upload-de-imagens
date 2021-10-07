@@ -27,7 +27,7 @@ export function CardList({ cards }: CardsProps): JSX.Element {
           cards.flat().map(card => {
             return (
               <Card
-                key={card.id}
+                key={card.ts}
                 data={card}
                 viewImage={e => {
                   onOpen();

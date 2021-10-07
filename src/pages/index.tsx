@@ -9,8 +9,10 @@ import { Loading } from '../components/Loading';
 import { Error } from '../components/Error';
 
 export default function Home(): JSX.Element {
-  const fetchImages = async ({ pageParam = 0 }) => {
-    const response = await api.get(`api/images?after=${pageParam}`);
+  const fetchImages = async ({ pageParam = null }) => {
+    const response = await api.get(
+      `/api/${pageParam ? `images?after=${pageParam}` : `images`}`
+    );
     return response;
   };
 
@@ -22,7 +24,7 @@ export default function Home(): JSX.Element {
     fetchNextPage,
     hasNextPage,
   } = useInfiniteQuery('images', fetchImages, {
-    getNextPageParam: after => {
+    getNextPageParam: (after) => {
       if (after.data.after) {
         return after.data.after;
       }
